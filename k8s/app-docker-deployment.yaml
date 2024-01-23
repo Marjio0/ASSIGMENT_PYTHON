@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-docker-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: app-docker
+  template:
+    metadata:
+      labels:
+        app: app-docker
+    spec:
+      containers:
+        - name: app-docker
+          image: marjio0/app-docker:latest
+          ports:
+            - containerPort: 3001
